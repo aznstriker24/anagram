@@ -13,4 +13,4 @@ module MultiSet where
     toSet ((x,n):xs) = x : toSet xs
 
     remDup :: Eq a => [a] -> [a]
-    remDup = toSet . toMulti
+    remDup = (toSet . toMulti)
