@@ -1,8 +1,12 @@
 -- | Main entry point to the application.
 module Main where
 
--- | The main entry point.
-main :: IO ()
-main = do
-    putStrLn "Welcome to FP Haskell Center!"
-    putStrLn "Have a good day!"
+    import Anagram
+    import MultiSet (remDup)
+    import Control.Applicative
+
+    main :: IO ()
+    main = fmap (remDup . anagram) getLine >>= printList
+
+    printList :: [String] -> IO ()
+    printList = foldr ((>>) . putStrLn) (return ())
